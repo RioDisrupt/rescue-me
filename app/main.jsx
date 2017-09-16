@@ -8,7 +8,7 @@
 import 'babel-polyfill'
 
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 
