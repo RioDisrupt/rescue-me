@@ -46,6 +46,7 @@ render(
           <Header/>
           <Router>
             <Switch>
+              <Route exact path='/' component={TestButton} />
               <Route path='/choose' component={PickScreen} />
               <Route path='/givehelp' component={RescuerForm} />
               <Route path='/gethelp' component={RescueeForm} />

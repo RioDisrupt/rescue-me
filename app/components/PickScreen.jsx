@@ -15,7 +15,7 @@ export default class PickScreen extends React.Component{
         <div className="picker-bottom">
           <div className="givehelp">
             <a href="">
-              Give Help
+              Offer Help
             </a>
           </div>
         </div>

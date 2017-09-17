@@ -8,7 +8,7 @@ export default class endGiveHelp extends React.Component{
         <div className="login-box">
           <div className="givehelp">
             <a href="">
-              Complete
+              You will be notified when help is needed.
             </a>
           </div>
         </div>

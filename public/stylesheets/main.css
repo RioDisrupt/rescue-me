@@ -78,6 +78,60 @@ textarea:focus, input:focus, button{
     outline: none;
 }
 
+/* Start media query */
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+		#main {
+		  width: 100%;
+		  background-color: #ececec;
+		  margin-top: -2vh;
+		  background-image: none!important;
+		  background-size: cover;
+		  background-repeat: no-repeat;
+		}
+
+		.app-container {
+			width: 100%!important;
+			margin: 0 auto;
+			height: -webkit-fill-available;
+			background-color: #fff;
+			transform: none!important;
+			box-shadow: 3vh 3vh 3vh rgba(0, 0, 0, 0);
+		}
+}
+
+@media only screen
+  and (min-width: 320px)
+  and (max-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+		#main {
+		  width: 100%;
+		  background-color: #ececec;
+		  margin-top: -2vh;
+		  background-image: none!important;
+		  background-size: cover;
+		  background-repeat: no-repeat;
+		}
+
+		.app-container {
+			width: 100%!important;
+			margin: 0 auto;
+			height: -webkit-fill-available;
+			background-color: #fff;
+			transform: none!important;
+			box-shadow: 3vh 3vh 3vh rgba(0, 0, 0, 0);
+		}
+}
+
+
+
 #main {
   width: 100%;
   background-color: #ececec;
@@ -194,13 +248,13 @@ input {
 .login-box {
   height: 98vh;
   background-color: #D63037;
+	text-align: center;
 }
 
 .social-login a {
   color: #ffffff;
   position: relative;
   top: 42vh;
-  left: 21vh;
   font-size: 6vh;
   font-weight: bolder;
   line-height: 6.5vh;
@@ -221,7 +275,6 @@ input {
 	background-color: #D63037;
 	height: 50%;
 	position: absolute;
-	top: 0;
 }
 
 .picker-top a, .picker-bottom a {
@@ -237,27 +290,18 @@ input {
 
 
 .givehelp {
-	width: 80%;
-    left: -15vh;
-    position: absolute;
-    text-align: center;
-    top: -2vh;
-
+  position: absolute;
+  text-align: center;
 }
 
 .gethelp {
-	width: 80%;
-  left: -15vh;
   position: absolute;
-  text-align: center;
-  top: -2vh;
+	text-align: center;
 }
 
 .gethelp a {
 	color: #ffffff;
 position: relative;
-top: 42vh;
-left: 21vh;
 font-size: 6vh;
 font-weight: bolder;
 line-height: 6.5vh;
@@ -266,8 +310,6 @@ line-height: 6.5vh;
 .givehelp a {
 	color: #ffffff;
 position: relative;
-top: 47vh;
-left: 20vh;
 font-size: 6vh;
 font-weight: bolder;
 line-height: 6.5vh;

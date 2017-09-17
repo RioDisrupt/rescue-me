@@ -45,7 +45,7 @@ export default class RescuerForm extends React.Component{
 
 
 
-          <button type="button" onclick="" value="Request Rescue">Request Rescue</button>
+          <button type="button" onclick="" value="Request Rescue">Complete</button>
         </form>
       </div>
     )
