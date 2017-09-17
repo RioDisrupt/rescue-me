@@ -5,8 +5,8 @@ export default class RescuerForm extends React.Component{
 
     return(
       <div className="form">
+        <h1>Give Help</h1>
         <form>
-
           <p>What type of vehicle do you have?</p>
           <div className="select-style">
             <select>
@@ -19,9 +19,11 @@ export default class RescuerForm extends React.Component{
           <p>How many people can you accomodate?</p>
           <div className="select-style">
             <select>
-              <option value="1">Land</option>
-              <option value="2">Water</option>
-              <option value="3">Air</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
           </div>
 

@@ -5,8 +5,8 @@ export default class RescueeForm extends React.Component{
 
     return(
       <div className="form">
+        <h1>Get Help</h1>
         <form>
-
           <p>Is this a medical emergency?</p>
 
           <div className="yesno">
