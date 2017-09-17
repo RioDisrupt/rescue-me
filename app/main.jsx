@@ -18,8 +18,10 @@ import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 import TestButton from './components/button'
 
+import Header from './components/header'
 import PickScreen from './components/PickScreen'
 import RescueeForm from './components/RescueeForm'
+import Footer from './components/footer'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -35,14 +37,22 @@ const ExampleApp = connect(
 
 render(
   <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route path='/choose' component={PickScreen} />
-        <Route path='/gethelp' component={RescueeForm} />
-        <Route exact path='/' component={TestButton} />
-        <Route path='*' component={NotFound} />
-      </Switch>
-    </Router>
+    <main>
+      <div className="outer">
+        <div className="app-container">
+          <Header/>
+          <Router>
+            <Switch>
+              <Route path='/choose' component={PickScreen} />
+              <Route path='/gethelp' component={RescueeForm} />
+              <Route exact path='/' component={TestButton} />
+              <Route path='*' component={NotFound} />
+            </Switch>
+          </Router>
+        </div>
+      </div>
+    </main>
+
   </Provider>,
   document.getElementById('main')
 )

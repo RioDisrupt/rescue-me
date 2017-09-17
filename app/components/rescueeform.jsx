@@ -6,30 +6,34 @@ export default class RescueeForm extends React.Component{
     return(
       <div className="form">
         <form>
+
           <p>Is this a medical emergency?</p>
-          <input type="radio" name="yes" value="yes" />
-          <p>Yes</p>
 
-          <input type="radio" name="no" value="no" />
-          <p>No</p>
-
+          <div className="yesno">
+            <input type="radio" name="yes" value="yes" />
+            <p>Yes</p>
+            <input type="radio" name="no" value="no" />
+            <p>No</p>
+          </div>
 
           <p>How many people need to be moved to safety?</p>
-          <select>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+          <div className="select-style">
+            <select>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
 
           <p>What phone number you can be reached at?</p>
-          <input type="text" value="phonenumber" />
+          <input type="text" className="inputbox"/>
 
           <p>What is your location?</p>
-          <p className="fakeLocation">Current Location</p>
+          <input type="text" className="inputbox"/>
 
-          <input type="button" onclick="" value="Request Rescue"/>
+          <button type="button" onclick="" value="Request Rescue">Request Rescue</button>
         </form>
       </div>
     )
