@@ -76,6 +76,7 @@ h1 {
 	font-size: 4vh;
     text-align: center;
     font-weight: bolder;
+		color: #D63037;
 }
 
 textarea:focus, input:focus, button{
