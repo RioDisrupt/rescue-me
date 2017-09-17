@@ -2,10 +2,17 @@
 
 // bcrypt docs: https://www.npmjs.com/package/bcrypt
 const bcrypt = require('bcryptjs')
-    , {STRING, VIRTUAL} = require('sequelize')
+    , {STRING, VIRTUAL, } = require('sequelize')
 
 module.exports = db => db.define('users', {
   name: STRING,
+  phoneNumber: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
   email: {
     type: STRING,
     validate: {
@@ -34,9 +41,9 @@ module.exports = db => db.define('users', {
   }
 })
 
-module.exports.associations = (User, {OAuth, Thing, Favorite}) => {
+module.exports.associations = (User, {OAuth}) => {
   User.hasOne(OAuth)
-  User.belongsToMany(Thing, {as: 'favorites', through: Favorite})
+  // User.belongsToMany(Thing, {as: 'favorites', through: Favorite})
 }
 
 function setEmailAndPassword(user) {

@@ -1,24 +1,24 @@
 'use strict'
 
 const db = require('APP/db')
-const User = db.model('users')
+const Victim = db.model('victim')
 
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
 module.exports = require('express').Router()
   .get('/',
     (req, res, next) =>
-      User.findAll()
-        .then(users => res.json(users))
+      Victim.findAll()
+        .then(victims => res.json(victims))
         .catch(next))
   .post('/',
     (req, res, next) =>
-      User.create(req.body)
-      .then(user => res.status(201).json(user))
+      Victim.create(req.body)
+      .then(victim => res.status(201).json(victim))
       .catch(next))
   .get('/:id',
     mustBeLoggedIn,
     (req, res, next) =>
-      User.findById(req.params.id)
-      .then(user => res.json(user))
+      Victim.findById(req.params.id)
+      .then(victim => res.json(victim))
       .catch(next))
