@@ -3,6 +3,7 @@
 const db = require('APP/db')
 const Rescuer = db.model('rescuer')
 const Victim = db.model('victim')
+const User = db.model('users')
 
 const Nexmo = require('nexmo');
 const nexmo = new Nexmo({
@@ -34,19 +35,20 @@ module.exports = require('express').Router()
       .then(rescuer => res.json(rescuer[1]))
       .catch(next))
   .get('/match/:victimId',
-    (req, res, next) => 
-        Victim.findById(req.params.victimId)
-        .then(victim => { 
+    (req, res, next) =>
+        Victim.findById(req.params.victimId, {include: {model: User}})
+        .then(victim => {
           Rescuer.findAll({
           where: {
             capacity: {$gte: victim.capacity},
             active: true,
             vehicle: victim.vehicle
-          }
-          })
+          },
+          include: {model: User}
+        })
           .then(async rescuers => {
         const closest = await shortestDistance(rescuers, victim.latitude, victim.longitude)
-        // text_match(victim, closest)
+        text_match(victim, closest)
         res.json(closest)
         })
       })
@@ -83,10 +85,10 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-function text_match(victim, rescuer) { 
+function text_match(victim, rescuer) {
 
-  var victimText = rescuer.name + " is on their way to help! You can can contact them at " + rescuer.phoneNumber;
-  var rescuerText = victim.name + " needs your help! Please prepare to take " + victim.capacity + " civilians to safety. Contact them at " + victim.phoneNumber;
+  var victimText = rescuer.user.name + " is on their way to help! You can can contact them at " + rescuer.phoneNumber;
+  var rescuerText = victim.user.name + " needs your help! Please prepare to take " + victim.capacity + " civilians to safety. Contact them at " + victim.phoneNumber;
 
   nexmo.message.sendSms(
     '12016728862', rescuer.phoneNumber, rescuerText,
