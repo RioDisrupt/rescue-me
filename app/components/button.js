@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import { whoami } from '../reducers/auth'
+import { connect } from "react-redux";
+import { Redirect } from 'react-router'
 
 class TestButton extends Component{
   constructor(props) {
@@ -26,6 +29,14 @@ class TestButton extends Component{
   }
 }
 
-import {connect} from 'react-redux'
+const mapStateToProps = state => ({
+  user: state.auth
+})
 
-export default connect(null, null)(TestButton);
+const mapDispatchToProps = dispatch => ({
+  getUser: () => {
+    dispatch(whoami())
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TestButton)

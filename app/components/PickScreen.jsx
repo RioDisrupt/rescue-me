@@ -1,24 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
+import { whoami } from '../reducers/auth'
+import { connect } from "react-redux";
 
-export default class PickScreen extends React.Component{
+class PickScreen extends Component{
   render(){
     return(
       <div>
         <div className="picker">
           <div className="gethelp">
-            <a href="">
+            <Link to="/gethelp">
               Get Help
-            </a>
+            </Link>
           </div>
         </div>
         <div className="picker">
           <div className="givehelp">
-            <a href="">
+            <Link to="/givehelp">
               Give Help
-            </a>
+            </Link>
           </div>
         </div>
       </div>
     )
   }
 }
+
+
+const mapStateToProps = state => ({
+  user: state.auth
+})
+
+const mapDispatchToProps = dispatch => ({
+  getUser: () => {
+    dispatch(whoami())
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PickScreen)

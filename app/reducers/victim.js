@@ -5,13 +5,15 @@ import axios from 'axios'
 
 //INITIAL STATE
 const initialState = {
-  victim: {}
+  victim: {},
+  rescuer: {}
 }
 
 // ACTION TYPE CONSTANT
 const GET_VICTIM = 'GET_VICTIM'
 const CREATE_VICTIM = 'CREATE_VICTIM'
 const EDIT_VICTIM = 'EDIT_VICTIM'
+const GET_HELP = 'GET_HELP'
 
 // ACTION CREATORS
 
@@ -36,6 +38,13 @@ const editVictim = victim => {
   }
 }
 
+const getHelp = (rescuer) => {
+  return {
+    type: GET_HELP,
+    rescuer
+  }
+}
+
 // THUNKS
 
 export const fetchVictim = id =>
@@ -47,6 +56,18 @@ export const fetchVictim = id =>
   })
   .catch(err => console.log('fetch victim error', err))
 
+export const fetchHelp = id =>
+  dispatch =>
+  axios.get(`/api/rescuers/${id}`)
+  .then(res => res.data)
+  .then(rescuer => {
+    axios.put(`/api/victims/${id}`, {rescuer_id: rescuer.id})
+    .then(() => console.log('updated rescuer ID'))
+    .catch(err => console.log('update victim error', err))
+    dispatch(getHelp(rescuer))
+  })
+  .catch(err => console.log('fetch victim error', err))
+
 export const postVictim= victim =>
   dispatch =>
   axios.post('api/victims/', victim)
@@ -55,15 +76,6 @@ export const postVictim= victim =>
     dispatch(createVictim(victim))
   })
   .catch(err => console.log('post victim error', err))
-
-export const updateOrderStatus = (id, victim) =>
-  dispatch =>
-  axios.put(`/api/victims/${id}`, victim)
-  .then(res => res.data)
-  .then(victim => {
-    dispatch(editVictim(victim))
-  })
-  .catch(err => console.log('update victim error', err))
 
 // REDUCER
 
@@ -78,6 +90,9 @@ export default function reducer(state=initialState, action) {
     break
   case EDIT_VICTIM:
     newState.victim = action.victim
+    break
+  case GET_HELP:
+    newState.rescuer = action.rescuer
     break
   default:
     return state

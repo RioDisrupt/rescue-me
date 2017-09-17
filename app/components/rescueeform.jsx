@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { postVictim } from '../reducers/victim'
+import { postVictim, fetchHelp } from '../reducers/victim'
 import { whoami } from '../reducers/auth'
 import { connect } from "react-redux";
 
@@ -12,7 +12,7 @@ class RescueeForm extends Component{
       phone: '',
       lat: '',
       long: '',
-      vehicle: 'car'
+      vehicle: 'land'
     }
   }
 
@@ -36,6 +36,7 @@ class RescueeForm extends Component{
     event.preventDefault()
     const {vehicle, emergency, numPeople, phone, lat, long} = this.state
     this.props.postVictim({emergency: emergency, vehicle: vehicle, capacity: numPeople, latitude: lat, longitude: long, phoneNumber: phone, user_id: this.props.user.id})
+    this.props.fetchHelp(this.props.user.id)
   }
 
 
@@ -44,26 +45,34 @@ class RescueeForm extends Component{
       <div className="form">
         <form onSubmit={this.handleSubmit}>
           <p>Is this a medical emergency?</p>
-          <input id='no' onChange={(event) => this.setState({emergency: event.target.value})} type="radio" name="emergency" value="false" checked /> <label htmlFor='no'>No</label><br />
-          <input id='yes' onChange={(event) => this.setState({emergency: event.target.value})} type="radio" name="emergency" value="true" /><label htmlFor='yes'>Yes</label><br />
+          <div className="yesno">
+            <input id='no' onChange={(event) => this.setState({emergency: event.target.value})} type="radio" name="emergency" value="false" checked /> <label htmlFor='no'>No</label><br />
+            <input id='yes' onChange={(event) => this.setState({emergency: event.target.value})} type="radio" name="emergency" value="true" /><label htmlFor='yes'>Yes</label><br />
+          </div>
           <p>Transportation Type</p>
-          <input id='car' onChange={(event) => this.setState({vehicle: event.target.value})} type="radio" name="transportation" value="car" checked /><label htmlFor='car'>Car</label><br />
-          <input id='boat' onChange={(event) => this.setState({vehicle: event.target.value})} type="radio" name="transportation" value="boat" /><label htmlFor='boat'>Boat</label><br />
+          <div className="select-style">
+            <select onChange={(event) => this.setState({vehicle: event.target.value})}>
+              <option value="land">Land</option>
+              <option value="water">Water</option>
+              <option value="air">Air</option>
+            </select>
+          </div>
           <p>How many people need to be moved to safety?</p>
-          <select onChange={(event) => this.setState({numPeople: event.target.value})}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+          <div className="select-style">
+            <select onChange={(event) => this.setState({numPeople: event.target.value})}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
 
           <p>What phone number you can be reached at?</p>
-          <input onChange={(event) => this.setState({phone: event.target.value})} type="text" value={this.state.phone} />
+          <input className="inputbox" onChange={(event) => this.setState({phone: event.target.value})} type="text" value={this.state.phone} />
 
-          <p>What is your location?</p>
-          <p className="fakeLocation">Current Location</p>
-          <input type="submit" value="Request Rescue"/>
+          <button type="submit" value="Request Rescue">Request Rescue</button>
+
         </form>
       </div>
     )
@@ -81,6 +90,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getUser: () => {
     dispatch(whoami())
+  },
+  fetchHelp: (id) => {
+    dispatch(fetchHelp(id))
   }
 })
 

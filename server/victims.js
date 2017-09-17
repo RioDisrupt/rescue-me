@@ -22,3 +22,8 @@ module.exports = require('express').Router()
       Victim.findById(req.params.id)
       .then(victim => res.json(victim))
       .catch(next))
+  .put('/:id', (req, res, next) => {
+    Victim.update(req.body, {where: {id: req.params.id}})
+    .then(victim => res.json(victim[1]))
+    .catch(next)
+  })
