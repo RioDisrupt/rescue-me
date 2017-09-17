@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
 
-export default class RescueeBtn extends React.Component{
+export default class RescueeBtn extends Component{
   render(){
-
     return(
       <div className="rescuee">
-        <p>Rescuee Button</p>
+        <Link to='/gethelp'>I Need Help</Link>
       </div>
     )
   }

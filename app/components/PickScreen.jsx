@@ -5,7 +5,6 @@ import RescuerBtn from './RescuerBtn'
 
 export default class PickScreen extends React.Component{
   render(){
-
     return(
       <div className="pick-screen">
         <RescueeBtn/>

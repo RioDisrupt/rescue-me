@@ -12,10 +12,10 @@ module.exports = require('express').Router()
         .then(victims => res.json(victims))
         .catch(next))
   .post('/',
-    (req, res, next) =>
+    (req, res, next) => {
       Victim.create(req.body)
       .then(victim => res.status(201).json(victim))
-      .catch(next))
+      .catch(next) })
   .get('/:id',
     mustBeLoggedIn,
     (req, res, next) =>

@@ -15,6 +15,10 @@ module.exports = db => db.define('victim', {
       notEmpty: true
     }
   },
+  emergency: {
+    type: BOOLEAN,
+    defaultValue: false
+  },
   rescued: {
     type: ENUM('yes', 'no', 'in progress'),
     defaultValue: 'no'
