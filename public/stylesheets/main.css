@@ -297,14 +297,17 @@ input {
 
 
 .givehelp {
-  position: absolute;
-  text-align: center;
+	text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 33vh;
 }
 
 .gethelp {
-  position: absolute;
 	text-align: center;
-
+  width: 80%;
+  margin: 0 auto;
+	padding-top: 33vh;
 }
 
 .gethelp a {
@@ -316,7 +319,7 @@ line-height: 6.5vh;
 }
 
 .givehelp a {
-	color: #D63037;
+	color: #ffffff;
 position: relative;
 font-size: 6vh;
 font-weight: bolder;
