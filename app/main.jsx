@@ -16,19 +16,45 @@ import store from './store'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
+import TestButton from './components/button'
+
+import Header from './components/header'
+import PickScreen from './components/PickScreen'
+import RescueeForm from './components/RescueeForm'
+import RescuerForm from './components/RescuerForm'
+import Footer from './components/footer'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 )(
   ({ user, children }) =>
-    <Router>
-      <Route path="/" component={ExampleApp}/>
-      <Route path='*' component={NotFound} />
-    </Router>
+    <div>
+      <nav>
+        {user ? <WhoAmI/> : <Login/>}
+      </nav>
+      {children}
+    </div>
 )
 
 render(
   <Provider store={store}>
+    <main>
+      <div className="outer">
+        <div className="app-container">
+          <Header/>
+          <Router>
+            <Switch>
+              <Route path='/choose' component={PickScreen} />
+              <Route path='/givehelp' component={RescuerForm} />
+              <Route path='/gethelp' component={RescueeForm} />
+              <Route exact path='/' component={TestButton} />
+              <Route path='*' component={NotFound} />
+            </Switch>
+          </Router>
+        </div>
+      </div>
+    </main>
+
   </Provider>,
   document.getElementById('main')
 )
