@@ -2,7 +2,6 @@ import React from 'react';
 
 export default class PickScreen extends React.Component{
   render(){
-
     return(
       <div>
         <div className="picker-top">

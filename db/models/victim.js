@@ -15,6 +15,10 @@ module.exports = db => db.define('victim', {
       notEmpty: true
     }
   },
+  emergency: {
+    type: BOOLEAN,
+    defaultValue: false
+  },
   rescued: {
     type: ENUM('yes', 'no', 'in progress'),
     defaultValue: 'no'
@@ -26,7 +30,14 @@ module.exports = db => db.define('victim', {
   longitude: {
     type: DOUBLE,
     allowNull: true
-  }
+  },
+  phoneNumber: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
 })
 
 module.exports.associations = (Victim, {User, Rescuer}) => {
