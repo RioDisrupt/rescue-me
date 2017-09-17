@@ -200,7 +200,7 @@ input {
   color: #ffffff;
   position: relative;
   top: 42vh;
-  left: 11vh;
+  left: 21vh;
   font-size: 6vh;
   font-weight: bolder;
   line-height: 6.5vh;
@@ -208,14 +208,67 @@ input {
 
 /* Pick Screen */
 
-.picker {
-	
+.picker-bottom {
+	width: 100%;
+	background-color: #98866e;
+	height: 50%;
+	position: absolute;
+	bottom: 0;
 }
 
+.picker-top {
+	width: 100%;
+	background-color: #D63037;
+	height: 50%;
+	position: absolute;
+	top: 0;
+}
+
+.picker-top a, .picker-bottom a {
+	color: #ffffff;
+    position: relative;
+    top: 23vh;
+    left: 16vh;
+    font-size: 6vh;
+    font-weight: bolder;
+    line-height: 6.5vh;
+}
+
+
+
 .givehelp {
+	width: 80%;
+    left: -15vh;
+    position: absolute;
+    text-align: center;
+    top: -2vh;
 
 }
 
 .gethelp {
+	width: 80%;
+  left: -15vh;
+  position: absolute;
+  text-align: center;
+  top: -2vh;
+}
 
+.gethelp a {
+	color: #ffffff;
+position: relative;
+top: 42vh;
+left: 21vh;
+font-size: 6vh;
+font-weight: bolder;
+line-height: 6.5vh;
+}
+
+.givehelp a {
+	color: #ffffff;
+position: relative;
+top: 47vh;
+left: 20vh;
+font-size: 6vh;
+font-weight: bolder;
+line-height: 6.5vh;
 }
