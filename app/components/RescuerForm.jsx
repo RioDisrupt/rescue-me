@@ -82,7 +82,7 @@ class RescuerForm extends Component{
             <input onChange={(event) => this.setState({active: event.target.value})} id='status-away' type="radio" name="status" value="false" />
             <label htmlFor='status-away'>Away</label><br />
           </div>
-          <button type="submit" value="Request Rescue">Request Rescue</button>
+          <button type="submit" value="Request Rescue">Complete</button>
         </form>
       </div>
     )

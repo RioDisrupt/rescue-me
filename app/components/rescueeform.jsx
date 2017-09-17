@@ -71,8 +71,7 @@ class RescueeForm extends Component{
           <p>What phone number you can be reached at?</p>
           <input className="inputbox" onChange={(event) => this.setState({phone: event.target.value})} type="text" value={this.state.phone} />
 
-          <button type="submit" value="Request Rescue">Request Rescue</button>
-
+        <button id="rescuebtn" type="submit" value="Request Rescue">Request Rescue</button>
         </form>
       </div>
     )

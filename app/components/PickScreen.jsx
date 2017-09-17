@@ -7,14 +7,14 @@ class PickScreen extends Component{
   render(){
     return(
       <div>
-        <div className="picker">
+        <div className="picker-top">
           <div className="gethelp">
             <Link to="/gethelp">
               Get Help
             </Link>
           </div>
         </div>
-        <div className="picker">
+        <div className="picker-bottom">
           <div className="givehelp">
             <Link to="/givehelp">
               Give Help
