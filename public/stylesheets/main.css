@@ -275,6 +275,7 @@ input {
 	height: 50%;
 	position: absolute;
 	bottom: 0;
+	text-align: center;
 }
 
 .picker-top {
@@ -282,16 +283,25 @@ input {
 	background-color: #D63037;
 	height: 50%;
 	position: absolute;
+	text-align: center;
 }
 
-.picker-top a, .picker-bottom a {
+.picker-top a {
 	color: #ffffff;
-    position: relative;
-    top: 23vh;
-    left: 16vh;
+  font-size: 6vh;
+  font-weight: bolder;
+  line-height: 6.5vh;
+	position: relative;
+  top: 20vh;
+}
+
+.picker-bottom a {
+	color: #D63037;
     font-size: 6vh;
-    font-weight: bolder;
-    line-height: 6.5vh;
+ font-weight: bolder;
+ line-height: 6.5vh;
+	position: relative;
+top: 20vh;
 }
 
 
