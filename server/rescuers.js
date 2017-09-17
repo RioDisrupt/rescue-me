@@ -100,7 +100,7 @@ function text_match(victim, rescuer) {
         }
       }
    );
-
+  sleep(1000)
   nexmo.message.sendSms(
     '12016728862', victim.phoneNumber, victimText,
       (err, responseData) => {
@@ -112,4 +112,8 @@ function text_match(victim, rescuer) {
       }
    );
 
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
