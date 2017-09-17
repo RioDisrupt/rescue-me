@@ -37,8 +37,8 @@ render(
   <Provider store={store}>
     <Router>
       <Switch>
-        
-        <Route path='/' component={RescueeForm} />
+        <Route path='/choose' component={PickScreen} />
+        <Route path='/gethelp' component={RescueeForm} />
         <Route exact path='/' component={TestButton} />
         <Route path='*' component={NotFound} />
       </Switch>
