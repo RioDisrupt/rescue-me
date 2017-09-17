@@ -10,8 +10,8 @@ class RescueeForm extends Component{
       emergency: false,
       numPeople: '1',
       phone: '',
-      lat: '37.7757407',
-      long: '-122.38955',
+      lat: '',
+      long: '',
       vehicle: 'car'
     }
   }
@@ -37,6 +37,7 @@ class RescueeForm extends Component{
     const {vehicle, emergency, numPeople, phone, lat, long} = this.state
     this.props.postVictim({emergency: emergency, vehicle: vehicle, capacity: numPeople, latitude: lat, longitude: long, phoneNumber: phone, user_id: this.props.user.id})
   }
+
 
   render(){
     return(

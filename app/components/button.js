@@ -18,7 +18,7 @@ class TestButton extends Component{
         <div className="social-login">
           <a href='/api/auth/login/facebook'>
             <i className="fa fa-facebook fa-lg"></i>
-            Login in with facebook
+            Request Help
           </a>
         </div>
       </div>
