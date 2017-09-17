@@ -33,7 +33,7 @@ export default class RescueeForm extends React.Component{
           <p>What is your location?</p>
           <input type="text" className="inputbox"/>
 
-          <button type="button" onclick="" value="Request Rescue">Request Rescue</button>
+        <button id="rescuebtn" type="button" onclick="" value="Request Rescue">Request Rescue</button>
         </form>
       </div>
     )

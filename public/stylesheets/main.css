@@ -56,16 +56,20 @@ p {
 }
 
 button {
-  width: 100%;
-  background-color: #530C14;
-  height: 14vh;
+	width: 100%;
+  background-color: #D63037;
+  height: 12vh;
   border: none;
   color: white;
   font-size: 3.6vh;
-  margin-top: 2vh;
-  bottom: 0;
-  position: absolute;
-  left: 0vh;
+  margin: 0 auto;
+  bottom: -10vh;
+  position: relative;
+}
+
+#rescuebtn {
+	bottom: -1vh!important;
+	position: relative;
 }
 
 h1 {
@@ -177,6 +181,7 @@ form {
   width: 85%;
   overflow: hidden;
   padding: .5vh;
+	height: 90vh;
 }
 
 .form {
@@ -214,6 +219,8 @@ input {
   padding-right: 2vh;
 }
 
+
+
 /* styling for input */
 
 .select-style {
@@ -224,7 +231,7 @@ input {
 }
 
 .select-style select {
-  width: 130%;
+  width: 100%;
   box-shadow: none;
   background: transparent;
   background-image: none;
@@ -264,7 +271,7 @@ input {
 
 .picker-bottom {
 	width: 100%;
-	background-color: #98866e;
+	background-color: #ffffff;
 	height: 50%;
 	position: absolute;
 	bottom: 0;
@@ -297,6 +304,7 @@ input {
 .gethelp {
   position: absolute;
 	text-align: center;
+
 }
 
 .gethelp a {
@@ -308,7 +316,7 @@ line-height: 6.5vh;
 }
 
 .givehelp a {
-	color: #ffffff;
+	color: #D63037;
 position: relative;
 font-size: 6vh;
 font-weight: bolder;
