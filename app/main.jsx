@@ -18,6 +18,9 @@ import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 import TestButton from './components/button'
 
+import PickScreen from './components/PickScreen'
+import RescueeForm from './components/RescueeForm'
+
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 )(
@@ -34,6 +37,8 @@ render(
   <Provider store={store}>
     <Router>
       <Switch>
+        <Route path='/choose' component={PickScreen} />
+        <Route path='/gethelp' component={RescueeForm} />
         <Route exact path='/' component={TestButton} />
         <Route path='*' component={NotFound} />
       </Switch>
