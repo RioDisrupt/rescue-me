@@ -37,8 +37,8 @@ OAuth.setupStrategy({
   provider: 'facebook',
   strategy: require('passport-facebook').Strategy,
   config: {
-    clientID: env.FACEBOOK_CLIENT_ID,
-    clientSecret: env.FACEBOOK_CLIENT_SECRET,
+    clientID: "124178294972361",
+    clientSecret: "93f5685462bcf7fb158041f23b72b56b",
     callbackURL: `${app.baseUrl}/api/auth/login/facebook`,
   },
   passport
