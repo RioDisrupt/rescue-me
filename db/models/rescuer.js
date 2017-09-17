@@ -30,10 +30,18 @@ module.exports = db => db.define('rescuer', {
   medicalExperience: {
     type: BOOLEAN,
     allowNull: false,
+    defaultValue: false,
     validate: {
       notEmpty: true
     }
-  }
+  },
+  phoneNumber: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
 })
 
 module.exports.associations = (Rescuer, {User, Victim}) => {

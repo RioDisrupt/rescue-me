@@ -26,7 +26,14 @@ module.exports = db => db.define('victim', {
   longitude: {
     type: DOUBLE,
     allowNull: true
-  }
+  },
+  phoneNumber: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
 })
 
 module.exports.associations = (Victim, {User, Rescuer}) => {
