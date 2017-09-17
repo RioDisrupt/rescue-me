@@ -5,7 +5,7 @@ const {STRING, VIRTUAL, ENUM, INTEGER, BOOLEAN, DOUBLE} = require('sequelize')
 
 module.exports = db => db.define('victim', {
   vehicle: {
-    type: ENUM('boat', 'car'),
+    type: ENUM('air', 'water', 'land'),
     allowNull: false
   },
   capacity: {
