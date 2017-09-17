@@ -13,7 +13,7 @@ class RescuerForm extends Component{
       lat: '',
       long: '',
       vehicle: 'land',
-      active: false
+      active: true
     }
   }
 
@@ -75,14 +75,7 @@ class RescuerForm extends Component{
             <label htmlFor='emt-no'>No</label><br />
           </div>
 
-          <p>Current Status</p>
-          <div className="yesno">
-            <input onChange={(event) => this.setState({active: event.target.value})} id='status-active' type="radio" name="status" value="true" checked/>
-            <label htmlFor='status-active'>Active</label>< br />
-            <input onChange={(event) => this.setState({active: event.target.value})} id='status-away' type="radio" name="status" value="false" />
-            <label htmlFor='status-away'>Away</label><br />
-          </div>
-          <button type="submit" value="Request Rescue">Complete</button>
+          <button id="rescue" type="submit" value="Request Rescue">Complete</button>
         </form>
       </div>
     )

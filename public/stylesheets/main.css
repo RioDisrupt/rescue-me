@@ -67,6 +67,18 @@ button {
   position: relative;
 }
 
+#rescue {
+	width: 100%;
+background-color: #D63037;
+height: 12vh;
+border: none;
+color: white;
+font-size: 3.6vh;
+margin: 0 auto;
+bottom: -4vh;
+position: relative;
+}
+
 #rescuebtn {
 	bottom: -1vh!important;
 	position: relative;
@@ -323,16 +335,21 @@ top: 20vh;
 
 .gethelp a {
 	color: #ffffff;
-position: relative;
-font-size: 6vh;
-font-weight: bolder;
-line-height: 6.5vh;
+    position: relative;
+    font-size: 6vh;
+    font-weight: bolder;
+    line-height: 6.5vh;
+    position: absolute;
+    left: 15vh;
 }
 
 .givehelp a {
-	color: #ffffff;
-position: relative;
+	position: relative;
 font-size: 6vh;
 font-weight: bolder;
 line-height: 6.5vh;
+position: absolute;
+top: 17vh;
+color: #D63037;
+left: 15vh;
 }
