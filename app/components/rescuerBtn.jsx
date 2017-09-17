@@ -5,7 +5,7 @@ export default class RescuerBtn extends React.Component{
 
     return(
       <div className="rescuer">
-        <p>Rescuer</p>
+        <p>Rescuer Button</p>
       </div>
     )
   }
