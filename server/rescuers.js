@@ -2,6 +2,13 @@
 
 const db = require('APP/db')
 const Rescuer = db.model('rescuer')
+const Victim = db.model('victim')
+
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+  apiKey: 'cdc37eb9',
+  apiSecret: 'e88992c6217a4519'
+});
 
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
@@ -26,18 +33,22 @@ module.exports = require('express').Router()
       Rescuer.update(req.body, {where: {id: req.params.id}})
       .then(rescuer => res.json(rescuer[1]))
       .catch(next))
-  .get('/:capacity/:vehicle/:latitude/:longitude',
-    (req, res, next) =>
-      Rescuer.findAll({
-        where: {
-          capacity: {$gte: req.params.capacity},
-          active: true,
-          vehicle: req.params.vehicle
-        }
-      })
-      .then(async rescuers => {
-        const closest = await shortestDistance(rescuers, req.params.latitude, req.params.longitude)
+  .get('/match/:victimId',
+    (req, res, next) => 
+        Victim.findById(req.params.victimId)
+        .then(victim => { 
+          Rescuer.findAll({
+          where: {
+            capacity: {$gte: victim.capacity},
+            active: true,
+            vehicle: victim.vehicle
+          }
+          })
+          .then(async rescuers => {
+        const closest = await shortestDistance(rescuers, victim.latitude, victim.longitude)
+        // text_match(victim, closest)
         res.json(closest)
+        })
       })
       .catch(next))
 
@@ -70,4 +81,33 @@ function distance(rlat,rlon,vlat,vlon) {
 
 function deg2rad(deg) {
   return deg * (Math.PI/180)
+}
+
+function text_match(victim, rescuer) { 
+
+  var victimText = rescuer.name + " is on their way to help! You can can contact them at " + rescuer.phoneNumber;
+  var rescuerText = victim.name + " needs your help! Please prepare to take " + victim.capacity + " civilians to safety. Contact them at " + victim.phoneNumber;
+
+  nexmo.message.sendSms(
+    '12016728862', rescuer.phoneNumber, rescuerText,
+      (err, responseData) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.dir(responseData);
+        }
+      }
+   );
+
+  nexmo.message.sendSms(
+    '12016728862', victim.phoneNumber, victimText,
+      (err, responseData) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.dir(responseData);
+        }
+      }
+   );
+
 }
