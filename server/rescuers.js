@@ -11,6 +11,8 @@ const nexmo = new Nexmo({
   apiSecret: 'e88992c6217a4519'
 });
 
+const axios = require('axios')
+
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
 module.exports = require('express').Router()
@@ -85,10 +87,11 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-function text_match(victim, rescuer) {
-
+async function text_match(victim, rescuer) {
+  var info = await reverse_geocode(victim.latitude, victim.longitude)
+  var address = info.street + ", " + info.adminArea5 + " " + info.adminArea3 + " " + info.postalCode
   var victimText = rescuer.user.name + " is on their way to help! You can can contact them at " + rescuer.phoneNumber;
-  var rescuerText = victim.user.name + " needs your help! Please prepare to take " + victim.capacity + " civilians to safety. Contact them at " + victim.phoneNumber;
+  var rescuerText = victim.user.name + " needs your help! Please prepare to take " + victim.capacity + " civilians to safety. Contact them at " + victim.phoneNumber + ". Address:\n"+ address;
 
   nexmo.message.sendSms(
     '12016728862', rescuer.phoneNumber, rescuerText,
@@ -116,4 +119,14 @@ function text_match(victim, rescuer) {
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function reverse_geocode(latitude, longitude) {
+  return axios.get('http://www.mapquestapi.com/geocoding/v1/reverse', {
+    params: {
+      key: 'iFGHMM0mA1ka8jgdcaGiMdzcDOXp7bjZ',
+      location: latitude+','+longitude
+    }}
+  )
+  .then(res => res.data.results[0].locations[0])
 }
