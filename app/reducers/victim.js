@@ -58,7 +58,7 @@ export const fetchVictim = id =>
 
 export const fetchHelp = id =>
   dispatch =>
-  axios.get(`/api/rescuers/${id}`)
+  axios.get(`/api/rescuers/match/${id}`)
   .then(res => res.data)
   .then(rescuer => {
     axios.put(`/api/victims/${id}`, {rescuer_id: rescuer.id})
