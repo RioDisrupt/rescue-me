@@ -22,6 +22,8 @@ import Header from './components/header'
 import PickScreen from './components/PickScreen'
 import RescueeForm from './components/RescueeForm'
 import RescuerForm from './components/RescuerForm'
+import endGetHelp from './components/endGetHelp'
+import endGiveHelp from './components/endGiveHelp'
 import Footer from './components/footer'
 
 const ExampleApp = connect(
@@ -44,10 +46,12 @@ render(
           <Header/>
           <Router>
             <Switch>
+              <Route exact path='/' component={TestButton} />
               <Route path='/choose' component={PickScreen} />
               <Route path='/givehelp' component={RescuerForm} />
               <Route path='/gethelp' component={RescueeForm} />
-              <Route exact path='/' component={TestButton} />
+              <Route path='/endGetHelp' component={endGetHelp} />
+              <Route path='/endGiveHelp' component={endGiveHelp} />
               <Route path='*' component={NotFound} />
             </Switch>
           </Router>

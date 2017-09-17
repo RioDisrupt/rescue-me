@@ -4,19 +4,15 @@ export default class PickScreen extends React.Component{
   render(){
     return(
       <div>
-        <div className="picker">
-          <div className="gethelp">
+        <div className="picker-top">
             <a href="">
               Get Help
             </a>
-          </div>
         </div>
-        <div className="picker">
-          <div className="givehelp">
+        <div className="picker-bottom">
             <a href="">
-              Give Help
+              Offer Help
             </a>
-          </div>
         </div>
       </div>
     )

@@ -62,8 +62,10 @@ class RescueeForm extends Component{
           <input onChange={(event) => this.setState({phone: event.target.value})} type="text" value={this.state.phone} />
 
           <p>What is your location?</p>
-          <p className="fakeLocation">Current Location</p>
-          <input type="submit" value="Request Rescue"/>
+        <p className="fakeLocation">Current Location</p> 
+
+        <button id="rescuebtn" type="submit" value="Request Rescue">Request Rescue</button>
+          
         </form>
       </div>
     )
