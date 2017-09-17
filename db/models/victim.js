@@ -3,7 +3,7 @@
 // bcrypt docs: https://www.npmjs.com/package/bcrypt
 const {STRING, VIRTUAL, ENUM, INTEGER, BOOLEAN, DOUBLE} = require('sequelize')
 
-module.exports = db => db.define('rescuer', {
+module.exports = db => db.define('victim', {
   vehicle: {
     type: ENUM('boat', 'car'),
     allowNull: false
@@ -26,17 +26,10 @@ module.exports = db => db.define('rescuer', {
   longitude: {
     type: DOUBLE,
     allowNull: true
-  },
-  phoneNumber: {
-    type: STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
   }
 })
 
-// module.exports.associations = (User, {OAuth, Thing, Favorite}) => {
-//   User.hasOne(OAuth)
-//   User.belongsToMany(Thing, {as: 'favorites', through: Favorite})
-// }
+module.exports.associations = (Victim, {User, Rescuer}) => {
+  Victim.belongsTo(User)
+  Victim.belongsTo(Rescuer)
+}

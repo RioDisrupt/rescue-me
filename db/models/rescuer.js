@@ -33,17 +33,10 @@ module.exports = db => db.define('rescuer', {
     validate: {
       notEmpty: true
     }
-  },
-  phoneNumber: {
-    type: STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
   }
 })
 
-// module.exports.associations = (User, {OAuth, Thing, Favorite}) => {
-//   User.hasOne(OAuth)
-//   User.belongsToMany(Thing, {as: 'favorites', through: Favorite})
-// }
+module.exports.associations = (Rescuer, {User, Victim}) => {
+  Rescuer.belongsTo(User)
+  Rescuer.hasMany(Victim)
+}

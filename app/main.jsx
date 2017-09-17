@@ -18,24 +18,26 @@ import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 import TestButton from './components/button'
 
-const App = connect(
+const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 )(
   ({ user, children }) =>
-    <Router>
-      <main>
-      <Switch>
-        <Route path="/" component={ExampleApp}/>
-        <Route path='/login' component={TestButton} />
-        <Route path='*' component={NotFound} />
-      </Switch>
-      </main>
-    </Router>
+    <div>
+      <nav>
+        {user ? <WhoAmI/> : <Login/>}
+      </nav>
+      {children}
+    </div>
 )
 
 render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <Switch>
+        <Route exact path='/' component={TestButton} />
+        <Route path='*' component={NotFound} />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('main')
 )
